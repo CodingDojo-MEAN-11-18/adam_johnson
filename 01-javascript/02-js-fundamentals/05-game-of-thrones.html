@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    $('.houseStark').click(function(){
+      $.get("https://www.anapioficeandfire.com/api/houses/34", displayInfo);
+      function displayInfo(data){
+        $('.houseName').text(`Name: ${data.name}`);
+        $('.houseWords').text(`Words: ${data.words}`);
+        $('.houseTitles').text(`Titles: ${data.titles}`);
+      }
+    })
+    $('.houseTargaryen').click(function(){
+      $.get("https://www.anapioficeandfire.com/api/houses/378", displayInfo);
+      function displayInfo(data){
+        $('.houseName').text(`Name: ${data.name}`);
+        $('.houseWords').text(`Words: ${data.words}`);
+        $('.houseTitles').text(`Titles: ${data.titles}`);
+      }
+    })
+    $('.houseLannister').click(function(){
+      $.get("https://www.anapioficeandfire.com/api/houses/229", displayInfo);
+      function displayInfo(data){
+        $('.houseName').text(`Name: ${data.name}`);
+        $('.houseWords').text(`Words: ${data.words}`);
+        $('.houseTitles').text(`Titles: ${data.titles}`);
+      }
+    })
+    $('.houseBaratheon').click(function(){
+      $.get("https://www.anapioficeandfire.com/api/houses/16", displayInfo);
+      function displayInfo(data){
+        $('.houseName').text(`Name: ${data.name}`);
+        $('.houseWords').text(`Words: ${data.words}`);
+        $('.houseTitles').text(`Titles: ${data.titles}`);
+      }
+    })
+  })
+  </script>
+  <title>Game Of Thrones</title>
+</head>
+<body>
+  <button class = "houseStark">House Stark</button>
+  <button class = "houseTargaryen">House Targaryen</button>
+  <button class = "houseLannister">House Lannister</button>
+  <button class = "houseBaratheon">House Baratheon</button>
+  <p class = "houseName"></p>
+  <p class = "houseWords"></p>
+  <p class = "houseTitles"></p>
+</body>
+</html>

@@ -9,11 +9,11 @@
   <script>
     $(document).ready(function(){
       $('.getname').click(function(){
-        $.get("https://api.github.com/users/ajohns311", displayName)
+        $.get("https://api.github.com/users/ajohns311", displayName);
         function displayName(data){
-          var gitName = data.name;
+          let gitName = data.name;
           console.log(gitName);
-          document.write(gitName);
+          $('.showName').append(gitName);
         }
       });
     });
@@ -23,5 +23,6 @@
 </head>
 <body>
   <button class = "getname">Get Name</button>
+  <h1 class = "showName"></h1>
 </body>
 </html>

@@ -1,1 +1,29 @@
 <!-- 2 hours -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $.get("https://opentdb.com/api.php?amount=10&category=11&difficulty=medium&type=multiple",displayGame);
+    function displayGame(data){
+      for (let content in data.results){
+        let questions = data.results[content].question;
+        let options = [...data.results[content].incorrect_answers,data.results[content].correct_answer];
+        console.log(options);
+        $('.question').append('<li></li>', questions);
+        for (let i = 0; i < options.length;i++){
+          $('.question').append('<ol type = "a" class = "options"></ol>', options[i]);
+        }
+      }
+    }
+  </script>
+  <title>Trivia</title>
+</head>
+<body>
+  <h1>Trivia Game</h1>
+  <ol class = "question"></ol>
+</body>
+</html>
