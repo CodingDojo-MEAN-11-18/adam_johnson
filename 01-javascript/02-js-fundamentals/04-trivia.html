@@ -13,9 +13,9 @@
         let questions = data.results[content].question;
         let options = [...data.results[content].incorrect_answers,data.results[content].correct_answer];
         console.log(options);
-        $('.question').append('<li></li>', questions);
+        $('.questions').append('<li></li>', questions);
         for (let i = 0; i < options.length;i++){
-          $('.question').append('<ol type = "a" class = "options"></ol>', options[i]);
+          $('.questions').append('<ol class = "options"></ol>', options[i]);
         }
       }
     }
@@ -24,6 +24,7 @@
 </head>
 <body>
   <h1>Trivia Game</h1>
-  <ol class = "question"></ol>
+  <ol class = "questions">
+  </ol>
 </body>
 </html>

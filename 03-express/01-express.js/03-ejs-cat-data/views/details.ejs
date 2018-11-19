@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Cat Details</title>
+</head>
+<body>
+  <% for (var x in cat) { %>
+    <img src="<%= cat[x].image %>" alt="Grey Cat">
+    <h3>Name: <%= cat[x].name %></h3>
+    <h3>Color: <%= cat[x].color %></h3>
+    <h3>Weight: <%= cat[x].weight %></h3>
+  <% } %>
+  <a href="cats"><button>Cats Home</button></a>
+</body>
+</html>

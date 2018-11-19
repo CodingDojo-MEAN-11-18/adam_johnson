@@ -64,11 +64,13 @@ const server = http.createServer(function(request, response) {
     // SERVE AN HTML FILE!
       switch (fileType){
         case 'cars': // If firstChunk is 'cars', could be one of two routes.
-          if (file === 'new') {
-            serveHTML('new.html', response);
-          } else {
-            serveHTML('cars.html', response);
-          }
+          // if (file === 'new') {
+          //   serveHTML('new.html', response);
+          // } else {
+          //   serveHTML('cars.html', response);
+          // }
+          const page = file === 'new' ? 'new.html' : 'cars.html';
+          serveHTML(page,response);
           break;
         case 'cats':
           serveHTML('cats.html', response);
