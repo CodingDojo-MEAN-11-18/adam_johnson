@@ -1,12 +1,12 @@
-class Card {
-  constructor(suit,value){
-    this.suit = suit;
-    this.value = value;
-  }
-  show(){
-    console.log(`${this.suit} ${this.value}`);
-  }
-}
+// class Card {
+//   constructor(suit,value){
+//     this.suit = suit;
+//     this.value = value;
+//   }
+//   show(){
+//     console.log(`${this.suit} ${this.value}`);
+//   }
+// }
 
 class Deck {
   constructor(){
