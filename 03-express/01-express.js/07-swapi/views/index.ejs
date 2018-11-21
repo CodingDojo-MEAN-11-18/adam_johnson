@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('#peopleBtn').click(function(){
+        $.get('/people', function(data){
+          let results = data.results;
+          for (let i = 0; i < results.length; i++){
+            names = results[i].name;
+            $('#content').text(names);
+          };
+          console.log(data);
+        }, 'json');
+      });
+      $('#planetsBtn').click(function(data){
+
+      }, 'json');
+    });
+  </script>
+  <title>Star Wars Wiki</title>
+</head>
+<body>
+  <h1>Star Wars</h1>
+  <button id = "peopleBtn">People</button>
+  <button id = "planetsBtn">Planets</button>
+  <p id = "content"></p>
+ 
+</body>
+</html>
