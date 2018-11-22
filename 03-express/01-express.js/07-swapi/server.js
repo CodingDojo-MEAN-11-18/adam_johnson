@@ -19,12 +19,8 @@ app.get('/', function(request,response){
 
 app.get('/people', function(request,response){
   axios.get('https://swapi.co/api/people/')
-  .then(data => {
-    // results = data.data.results;
-    // for (let i = 0; i < results.length; i++){
-    //   console.log(results[i].name);
-    // }
-    response.json(data.data);
+  .then(content => {
+    response.json(content.data);
   })
   .catch(error => {
     console.log(error);
@@ -34,14 +30,31 @@ app.get('/people', function(request,response){
 
 app.get('/planets', function(request,response){
   axios.get('https://swapi.co/api/planets/')
-  .then(data => {
-    response.json(data);
+  .then(content => {
+    response.json(content.data);
   })
   .catch(error => {
     response.json(error);
   });
 });
 
+app.get('/next', function(request,response){
+  axios.get('https://swapi.co/api/people')
+  .then(content => {
+    const next = content.data.next;
+    console.log(next);
+    if (next != null) {
+      axios.get(`${next}`)
+      .then(nextcontent => {
+      console.log(nextcontent.data);
+      response.json(nextcontent.data);
+    });
+    }
+  })
+  .catch(error => {
+    response.json(error);
+  });
+});
 
 app.listen(port, () => console.log(`Express server listening on port ${port}`));
 
