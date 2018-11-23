@@ -13,6 +13,7 @@
           for (let i =0; i < data.results.length; i++){
             $('#display').append('<tr><td></tr></td>', data.results[i].name);
           }
+          pageNumber = 1;
         }, 'json');
       });
       $('#planetsBtn').click(function(){
@@ -23,15 +24,26 @@
           }
         }, 'json');
       });
-
+      let pageNumber = 1;
       $('#nextBtn').click(function(){
-        $.get('/next', function(data){
+        pageNumber += 1;
+        $.get('/next?page=' + pageNumber, function(data){
           $('#display').empty();
           for (let i =0; i < data.results.length; i++){
             $('#display').append(`<tr><td>${data.results[i].name}</tr></td>`);
           }
         }, 'json');
       });
+      $('#previousBtn').click(function(){
+        pageNumber -= 1;
+        $.get('/next?page=' + pageNumber, function(data){
+          $('#display').empty();
+          for (let i =0; i < data.results.length; i++){
+            $('#display').append(`<tr><td>${data.results[i].name}</tr></td>`);
+          }
+        }, 'json');
+      });
+      
     });
   </script>
   <title>Star Wars Wiki</title>

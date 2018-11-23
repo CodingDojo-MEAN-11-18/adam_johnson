@@ -39,17 +39,14 @@ app.get('/planets', function(request,response){
 });
 
 app.get('/next', function(request,response){
-  axios.get('https://swapi.co/api/people')
+  console.log(request.query);
+  let currentpage = 'https://swapi.co/api/people?page='+ request.query.page;
+  axios.get(currentpage)
   .then(content => {
-    const next = content.data.next;
-    console.log(next);
-    if (next != null) {
-      axios.get(`${next}`)
-      .then(nextcontent => {
-      console.log(nextcontent.data);
-      response.json(nextcontent.data);
-    });
-    }
+    if (content.data.next = null){
+      return pass;
+    };
+    response.json(content.data);
   })
   .catch(error => {
     response.json(error);
