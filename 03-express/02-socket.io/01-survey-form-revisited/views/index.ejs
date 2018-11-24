@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script>
+    $(document).ready(function(){
+      let socket = io.connect();
+      $('#form').submit(function(data){
+        socket.emit('postingForm', {
+          name: $('#name').val(),
+          location: $('#location').val(),
+          language: $('#language').val(),
+          comment: $('#comment').val()
+        });
+      socket.on('updated_message', function(data){
+        $('#message').html(`hello ${data.response}`);
+      });
+      socket.on('random_number', function(data){
+        $('number').html(`Your lucky number emitted by the server is ${data.response}`)
+      })
+      });
+    })
+  
+  
+  </script>
+  <title>Socket Survey</title>
+</head>
+<body>
+  <div class = "jumbotron">
+    <p id="message"></p>
+    <p id="number"></p>
+    <form  id = "form" action="">
+      <label for="name">Name: </label>
+      <input type="text" name="name" id="name">
+      <br>
+      <label for="location">Dojo Location: </label>
+      <select name="location" id="location">
+        <option value="chicago">Chicago</option>
+        <option value="newyork">New York</option>
+        <option value="seattle">Seattle</option>
+      </select>
+      <br>
+      <label for="language">Favorite Language: </label>
+      <select name="language" id="language">
+        <option value="javascipt">JavaScript</option>
+        <option value="python">Python</option>
+        <option value="html">HTML</option>
+      </select>
+      <br>
+      <label for="comment">Comment:</label>
+      <br>
+      <textarea name="comment" id="comment"cols="30" rows="3"></textarea>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+</body>
+</html>
