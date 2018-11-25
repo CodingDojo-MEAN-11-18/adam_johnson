@@ -7,29 +7,33 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
     $(document).ready(function(){
-      let pageNumber;
+      let pageNumber = 1;
       $('#peopleBtn').click(function(){
+        pageNumber = 1;
         $.get('/people', function(data){
           $('#display').empty();
           for (let i =0; i < data.results.length; i++){
             $('#display').append('<tr><td></tr></td>', data.results[i].name);
           }
-          pageNumber = 1;
         }, 'json');
       });
       $('#planetsBtn').click(function(){
+        pageNumber = 1;
         $.get('/planets', function(data){
           $('#display').empty();
           for (let i =0; i < data.results.length; i++){
             $('#display').append(`<tr><td>${data.results[i].name}</tr></td>`);
           }
-          pageNumber = 1;
         }, 'json');
       });
       
       $('#nextBtn').click(function(){
-        pageNumber ++;
+        ++pageNumber;
         $.get('/next?page=' + pageNumber, function(data){
+          console.log(data);
+          if (data.next === null){
+            pageNumber = 0;
+          };
           $('#display').empty();
           for (let i =0; i < data.results.length; i++){
             $('#display').append(`<tr><td>${data.results[i].name}</tr></td>`);
@@ -37,8 +41,12 @@
         }, 'json');
       });
       $('#previousBtn').click(function(){
-        pageNumber --;
-        $.get('/next?page=' + pageNumber, function(data){
+        --pageNumber;
+        $.get('/previous?page=' + pageNumber, function(data){
+          console.log(data.previous);
+          if (data.previous === null){
+            pageNumber = 2;
+          };
           $('#display').empty();
           for (let i =0; i < data.results.length; i++){
             $('#display').append(`<tr><td>${data.results[i].name}</tr></td>`);
@@ -46,6 +54,11 @@
         }, 'json');
       });
       
+      $('#allBtn').click(function(){
+        $.get('/all', function(data){
+          console.log(data);
+        });
+      });
     });
   </script>
   <title>Star Wars Wiki</title>
@@ -57,6 +70,6 @@
   <table id = "display"></table>
   <button id = "nextBtn">Next</button>
   <button id = "previousBtn">Prevoius</button>
- 
+  <button id ="allBtn">Show all</button>
 </body>
 </html>

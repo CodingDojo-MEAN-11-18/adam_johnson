@@ -16,8 +16,9 @@ app.use(parser.urlencoded({ extended: true }));
 app.get('/', function(request,response){
   response.render('index');
 });
-
+let library = '';
 app.get('/people', function(request,response){
+  library = 'people';
   axios.get('https://swapi.co/api/people/')
   .then(content => {
     response.json(content.data);
@@ -29,6 +30,7 @@ app.get('/people', function(request,response){
 });
 
 app.get('/planets', function(request,response){
+  library = 'planets';
   axios.get('https://swapi.co/api/planets/')
   .then(content => {
     response.json(content.data);
@@ -40,12 +42,37 @@ app.get('/planets', function(request,response){
 
 app.get('/next', function(request,response){
   console.log(request.query);
-  let currentpage = 'https://swapi.co/api/people?page='+ request.query.page;
+  let currentpage = `https://swapi.co/api/${library}?page=${request.query.page}`;
   axios.get(currentpage)
   .then(content => {
-    if (content.data.next = null){
-      return pass;
+    response.json(content.data);
+  })
+  .catch(error => {
+    response.json(error);
+  });
+});
+
+app.get('/previous', function(request,response){
+  console.log(request.query);
+  let currentpage = `https://swapi.co/api/${library}?page=${request.query.page}`;
+  axios.get(currentpage)
+  .then(content => {
+    response.json(content.data);
+  })
+  .catch(error => {
+    response.json(error);
+  });
+});
+
+app.get('/all', function(request,response){
+  axios.get(`https://swapi.co/api/${library}`)
+  .then(content => {
+    console.log(content);
+    if (content.data.next === null){
+      return;
     };
+    response.json(content.data);
+    axios.get(`'${content.data.next}'`);
     response.json(content.data);
   })
   .catch(error => {
