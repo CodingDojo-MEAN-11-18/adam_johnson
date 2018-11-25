@@ -24,8 +24,15 @@ const io = require('socket.io')(server);
 io.on('connection', socket => {
   socket.on('postingForm', function(data){
     let randomNum = Math.floor((Math.random()*1000) + 1);
-    let message = `You emitted the following information to the server: Name: ${data.name}, Dojo Location: ${data.locatoin}, Favorite Language: ${data.location}, Commment: ${data.comment}.`;
+
+    let message = `You emitted the following information to the server: 
+    Name: ${data.name}, 
+    Dojo Location: ${data.location}, 
+    Favorite Language: ${data.language}, 
+    Commment: ${data.comment}.
+    Your lucky number is ${randomNum}`;
+
     socket.emit('updated_message',{ response: message });
-    socket.emit('random_number', { response: randomNum });
+      // socket.emit('random_number', { response: randomNum });
   });
 });
