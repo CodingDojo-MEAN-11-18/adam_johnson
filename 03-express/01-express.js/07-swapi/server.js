@@ -64,21 +64,22 @@ app.get('/previous', function(request,response){
   });
 });
 
-app.get('/all', function(request,response){
-  axios.get(`https://swapi.co/api/${library}`)
-  .then(content => {
-    console.log(content);
-    if (content.data.next === null){
-      return;
-    };
-    response.json(content.data);
-    axios.get(`'${content.data.next}'`);
-    response.json(content.data);
-  })
-  .catch(error => {
-    response.json(error);
-  });
-});
+// app.get('/all', function(request,response){
+//   axios.get(`https://swapi.co/api/${library}`)
+//   .then(content => {
+//     console.log(content.data.next);
+//     if (content.data.next != null){
+//       axios.get(`'${content.data.next}'`)
+//       .then(content => {
+//         response.json(content.data);
+//       });
+//     };
+//     return 0;
+//   })
+//   .catch(error => {
+//     response.json(error);
+//   });
+// });
 
 app.listen(port, () => console.log(`Express server listening on port ${port}`));
 
