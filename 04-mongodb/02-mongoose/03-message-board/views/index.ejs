@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <style>
+    #commentForm {
+      font-size: 12px;
+      margin: 25px;
+    }
+  </style>
+  <title>Message Board</title>
+</head>
+<body class = "container">
+  <h1>Message Board</h1>
+  <% if (messages.errors) { %>
+    <%=messages.errors%>
+    <% for (let error of messages.errors) { %>
+      <p style = "color:red"><%= error %></p>
+    <% } %>
+  <% } %>
+  <form action="/message" method="post">
+    <label for="name">Name: </label>
+    <input type="text" name="name">
+    <br>
+    <label for="message">Message: </label>
+    <br>
+    <textarea name="message" id="commentarea" cols="30" rows="3"></textarea>
+    <br>
+    <input type="submit" value="Post Message" class = "btn btn-primary">
+  </form>
+  <div class="jumbotron">
+    <% for (message of messages) { %>
+      <p>Name: <%= message.name%></p>
+      <p>Message: <%= message.message%></p>
+      <% for (comment of message.comments) { %>
+        <p style = "text-indent: 50px; font-size: 12px"><%=comment.comment%></p>
+        <p style = "text-indent: 70px; font-size: 12px">- <%=comment.name%></p>
+      <% } %>
+      <div id = "commentForm">
+        <form action="/comment" method="post" id="commentForm">
+          <label for="name">Name: </label>
+          <input type="text" name="name">
+          <br>
+          <label for="comment">Comment: </label>
+          <br>
+          <textarea name="comment"cols="30" rows="3"></textarea>
+          <br>
+          <input type="hidden" name="id" value="<%= message.id%>">
+          <input type="submit" value="Post Comment">
+        </form>
+      </div>
+    <% } %>
+  </div>
+</body>
+</html>
