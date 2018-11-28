@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <title>Quoting Dojo</title>
+</head>
+<body class = "container">
+  <h1>Quoting Dojo</h1>
+  <% if (messages.errors) { %>
+    <% for (let error of messages.errors) { %>
+      <p style = "color:red"><%= error %></p>
+    <% } %>
+  <% } %>
+  <form action = "/quotes" method = "POST">
+    <label for="name">Name: </label>
+    <input type="text" name="name">
+    <br>
+    <label for="quote">Quote: </label>
+    <input type="text" name="quote">
+    <br>
+    <input type="submit" class = "btn btn-primary" value="Add Quote">
+  </form>
+  <br>
+  <a href="/quotes" ><button class = "btn btn-danger">View Quotes</button></a>
+</body>
+</html>
