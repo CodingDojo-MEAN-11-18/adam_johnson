@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <title>Wolves</title>
+  <style>
+    .wolfInfo{
+      border: 3px solid black;
+      display: inline-block;
+      padding: 5px
+    }
+  </style>
+</head>
+<body class = "container">
+  <h1>Wolves</h1>
+  <div class = "jumbotron">
+    <% for (wolf of wolves) { %>
+      <div class = "wolfInfo">
+        <p>Name: <%= wolf.name%></p>
+        <a href = "/wolves/<%= wolf._id%>"><button class = "btn btn-secondary">View Wolf</button></a>
+        <a href="/wolves/edit/<%= wolf._id%>"><button class = "btn btn-danger">Edit Wolf</button></a>
+      </div>
+    <% } %>
+  </div>
+  <br>
+  <a href="/wolves/new"><button class = "btn btn-primary">Add Wolf</button></a>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <title>Wolf</title>
+</head>
+<body class = "container">
+  <a href="/"><button class = "btn btn-primary float-right">All Wolves</button></a>
+  <h1>Wolf Info</h1>
+  <% for (detail of info) { %>
+    <p>Name: <%= detail.name%></p>
+    <p>Age: <%= detail.age%></p>
+    <p>Weight: <%= detail.weight%></p>
+    <a href="/wolves/edit/<%= detail._id%>"><button class = "btn btn-secondary">Edit Wolf</button></a>
+    <a href="/wolves/destroy/<%= detail._id%>"><button class = "btn btn-danger">Delete Wolf</button></a>
+  <% } %>
+  
+</body>
+</html>
