@@ -81,33 +81,25 @@ app.post('/message', function(request,response){
 });
 
 app.post('/comment', function(request,response){
-  const comment = new Comment({
-    name: request.body.name,
-    comment: request.body.comment
-  });
+  // const comment = new Comment({
+  //   name: request.body.name,
+  //   comment: request.body.comment
+  // });
+  const comment = new Comment(request.body);
   comment.save()
     .then(comment => {
-      Message.findById(request.body.id)
+      return Message.findById(request.body.id)
         .then(message => {
-          console.log(message.comments);
           message.comments.push(comment);
-          message.save()
-          .then(updatedMessage => {
-            console.log(updatedMessage);
+          return message.save();
+         })
+          .then(() => {
             response.redirect('/');
-          })
-          .catch(error => {
-            console.log(error);
           });
-        })
-        .catch(error => {
-          console.log(error);
-        });
     })
     .catch(error => {
       Object.keys(error.errors).map(key => request.flash('errors',error.errors[key].message));
           response.redirect('/');
-      console.log(error);
     });
 });
 
