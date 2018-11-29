@@ -17,7 +17,6 @@
 <body class = "container">
   <h1>Message Board</h1>
   <% if (messages.errors) { %>
-    <%=messages.errors%>
     <% for (let error of messages.errors) { %>
       <p style = "color:red"><%= error %></p>
     <% } %>
@@ -33,7 +32,7 @@
     <input type="submit" value="Post Message" class = "btn btn-primary">
   </form>
   <div class="jumbotron">
-    <% for (message of messages) { %>
+    <% for (message of words) { %>
       <p>Name: <%= message.name%></p>
       <p>Message: <%= message.message%></p>
       <% for (comment of message.comments) { %>
@@ -41,6 +40,11 @@
         <p style = "text-indent: 70px; font-size: 12px">- <%=comment.name%></p>
       <% } %>
       <div id = "commentForm">
+          <!-- <% if (messages.errors) { %>
+            <% for (let error of messages.errors) { %>
+              <p style = "color:red"><%= error %></p>
+            <% } %>
+          <% } %> -->
         <form action="/comment" method="post" id="commentForm">
           <label for="name">Name: </label>
           <input type="text" name="name">

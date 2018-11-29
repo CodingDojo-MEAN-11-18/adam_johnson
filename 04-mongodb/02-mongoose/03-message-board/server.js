@@ -55,8 +55,8 @@ const Message = mongoose.model('Message', messageSchema);
 
 app.get('/', function(request,response){
   Message.find({})
-  .then(messages => {
-    response.render('index', { messages: messages });
+  .then(words => {
+    response.render('index', { words });
   })
   .catch(error => {
     console.log(error);
@@ -74,8 +74,8 @@ app.post('/message', function(request,response){
       response.redirect('/');
     })
     .catch(error => {
-      Object.keys(error.errors).map(key => request.flash('errors', error.errors[key].message));
-      Object.keys(error.errors).map(key => console.log(error.errors[key].message));
+      Object.keys(error.errors).map(key => request.flash('errors',error.errors[key].message));
+      // Object.keys(error.errors).map(key => console.log(error.errors[key].message));
       response.redirect('/');
     });
 });
@@ -93,8 +93,8 @@ app.post('/comment', function(request,response){
           message.comments.push(comment);
           message.save()
           .then(updatedMessage => {
-            response.redirect('/');
             console.log(updatedMessage);
+            response.redirect('/');
           })
           .catch(error => {
             console.log(error);
@@ -105,6 +105,8 @@ app.post('/comment', function(request,response){
         });
     })
     .catch(error => {
+      Object.keys(error.errors).map(key => request.flash('errors',error.errors[key].message));
+          response.redirect('/');
       console.log(error);
     });
 });
