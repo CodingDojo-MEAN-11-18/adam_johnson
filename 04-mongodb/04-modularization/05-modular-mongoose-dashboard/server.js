@@ -1,17 +1,13 @@
 const express = require('express');
 const path = require('path');
 const parser = require('body-parser');
-const flash = require('express-flash');
 const session = require('express-session');
-const port = process.env.PORT || 8000;
+
 const app = express();
-
-app.use(parser.urlencoded({ extended: true }));
-
-app.use(flash());
+const port = process.env.PORT || 8000;
 
 app.use(session({
-  secret: 'dfkadjflkjsdlk',
+  secret: 'dfsjalfjlkds',
   resave: false,
   saveUninitialized: true,
   cookie: { maxAge: 60000 }
@@ -20,12 +16,12 @@ app.use(session({
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+app.use('/static', express.static(path.join(__dirname + '/static')));
+
+app.use(parser.urlencoded({ extended: true }));
 
 require('./server/config/database');
 require('./server/config/routes')(app);
-// require('./server/config/routes.js')(app);
-
-
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 

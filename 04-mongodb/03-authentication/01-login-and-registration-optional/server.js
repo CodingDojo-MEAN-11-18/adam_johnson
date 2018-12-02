@@ -41,7 +41,8 @@ const UserSchema = new Schema ({
   email: {
     type: String,
     required: [true, 'Email required'],
-    unique: [true, 'Email already in use']
+    unique: [true, 'Email already in use'],
+    $regex: [/r'^[a-zA-Z0-9.+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]+$'/, 'Please enter valid email address']
   },
   password: {
     type: String,
