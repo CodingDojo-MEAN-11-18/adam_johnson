@@ -78,7 +78,7 @@ app.put('/:id', function(request,resposne){
     });
 });
 
-app.delete(':id', function(request,response){
+app.delete('/:id', function(request,response){
   // Task.remove({ id: request.params.id })
   Task.findByIdAndRemove(request.params.id)
     .then(result => {

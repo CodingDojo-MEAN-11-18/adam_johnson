@@ -1,6 +1,7 @@
 //1. Setting Types
 // var myString: string;
-var myString: any;
+// var myString: any;
+var myString: string | number;
 // I can assign myString like this:
 myString = "Bee stinger";
 // Why is there a problem with this? What can I do to fix this?
@@ -9,7 +10,7 @@ myString = 9;
 //Fix: change the string type to any  
 
 //2. Setting the types for function parameters
-function sayHello(name: any){
+function sayHello(name: string | number){
   return `Hello, ${name}!`;
 }
 // This is working great:
