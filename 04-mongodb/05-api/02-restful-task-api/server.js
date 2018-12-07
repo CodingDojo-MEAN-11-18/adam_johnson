@@ -1,13 +1,16 @@
 const express = require('express');
 const parser = require('body-parser');
 const mongoose = require('mongoose');
-const port = process.env.PORT || 8000;
+const path = require('path');
 
+const port = process.env.PORT || 8000;
 const app = express();
 
 app.use(parser.json());
 
 app.use(express.static(__dirname + '/public/dist/public'));
+
+// app.use('/static', express.static(path.join(__dirname + '/public/dist/public')));
 
 const { Schema } = mongoose;
 
@@ -25,17 +28,17 @@ const taskSchema = new Schema({
 
 const Task = mongoose.model('Task', taskSchema);
 
-app.get('/', function(request,response){
+app.get('/tasks', function(request,response){
   Task.find({})
     .then(tasks => {
-      response.json({ data: tasks });
+      response.json({ tasks });
     })
     .catch(error => {
       console.log(error);
     });
 });
 
-app.get('/:id', function(request,response){
+app.get('/:_id', function(request,response){
   Task.findById(request.params.id)
     .then(task => {
       response.json({ task });
@@ -62,7 +65,7 @@ app.post('/', function(request,response){
       });
 });
 
-app.put('/:id', function(request,resposne){
+app.put('/:_id', function(request,response){
   // Task.findById(request.params.id)
   //   .then(task => {
   //     task.title = request.params.title;
@@ -78,7 +81,7 @@ app.put('/:id', function(request,resposne){
     });
 });
 
-app.delete('/:id', function(request,response){
+app.delete('/:_id', function(request,response){
   // Task.remove({ id: request.params.id })
   Task.findByIdAndRemove(request.params.id)
     .then(result => {
