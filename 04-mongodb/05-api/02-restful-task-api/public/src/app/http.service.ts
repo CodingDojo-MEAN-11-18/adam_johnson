@@ -7,12 +7,13 @@ import { HttpClient } from '@angular/common/http';
 export class HttpService {
 
   constructor(private _http: HttpClient) {
-    this.getTasks();
+    // this.getTasks();
     // this.getOne();
    }
   getTasks(){
-    let tempObservable = this._http.get('/tasks');
-    tempObservable.subscribe(data => console.log("Got our tasks", data));
+    // let tempObservable = this._http.get('/tasks');
+    // tempObservable.subscribe(data => console.log("Got our tasks", data));
+    return this._http.get('/tasks');
   }
   getOne(){
     let tempObservable = this._http.get('/:id');
