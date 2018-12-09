@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
+import { ArrayType } from '../../node_modules/@angular/compiler';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ import { HttpService } from './http.service';
 export class AppComponent implements OnInit {
   title = 'Restful Tasks API';
   tasks = [];
+
   constructor(private _httpService: HttpService){}
   ngOnInit(){
     this.getTasksFromService();
@@ -20,6 +22,8 @@ export class AppComponent implements OnInit {
       this.tasks = data['tasks'];
     });
   }
-
+  onClick(tasks: ArrayType): void {
+    console.log('Button working', tasks);
+  }
 }
 
