@@ -1,15 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>Welcome to {{ title }}!</h1>
+  <h1>Welcome to Restul Task API!</h1>
 
   <h3>All Tasks:</h3>
-  <p *ngFor = "let task of tasks">{{ task.title }} - {{ task.description }}</p>
+  <p *ngFor = "let task of tasks">{{ task.title }} - {{ task.description }} <button (click)="showClick()">Show</button></p>
   <br>
 
-  <h4>The 3rd Task</h4>
-  <p>{{ tasks[2].title }} - {{ tasks[2].description }}</p>
+  <!-- <h4>The 3rd Task</h4>
+  <p *ngIf = "tasks != undefined">{{ tasks[2].title }} - {{ tasks[2].description }}</p> -->
 
-  <button (click)="onClick(tasks)" >Click!</button>
+  <button (click)="onClick(tasks)" >Get Tasks!</button>
 
 </div>
 

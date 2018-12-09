@@ -8,22 +8,34 @@ import { ArrayType } from '../../node_modules/@angular/compiler';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Restful Tasks API';
   tasks = [];
+  task:object;
 
   constructor(private _httpService: HttpService){}
   ngOnInit(){
-    this.getTasksFromService();
+    // this.getTasksFromService();
   }
-  getTasksFromService(){
+  // getTasksFromService(){
+  //   let observable = this._httpService.getTasks();
+  //   observable.subscribe(data => {
+  //     console.log('Got Tasks!',data);
+  //     this.tasks = data['tasks'];
+  //   });
+  onClick(tasks: ArrayType): void {
+    console.log('Button working', tasks);
     let observable = this._httpService.getTasks();
     observable.subscribe(data => {
       console.log('Got Tasks!',data);
       this.tasks = data['tasks'];
     });
   }
-  onClick(tasks: ArrayType): void {
-    console.log('Button working', tasks);
+  showClick(id: Number): void {
+    console.log('Show button working');
+    let observable = this._httpService.getOne();
+    observable.subscribe(data => {
+      console.log(data);
+      this.task = data['task'];
+    })
   }
+ 
 }
-
