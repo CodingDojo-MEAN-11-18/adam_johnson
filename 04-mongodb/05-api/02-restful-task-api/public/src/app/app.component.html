@@ -8,7 +8,7 @@
   </p>
   <br>
 
-  <p> {{ task.title }} - {{ task.description }} </p>
+  <p *ngIf = "task"> {{ task.title }} - {{ task.description }} </p>
 
   <!-- <h4>The 3rd Task</h4>
   <p *ngIf = "tasks != undefined">{{ tasks[2].title }} - {{ tasks[2].description }}</p> -->
