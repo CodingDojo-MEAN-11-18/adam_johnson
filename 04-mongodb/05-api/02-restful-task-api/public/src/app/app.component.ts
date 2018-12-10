@@ -9,7 +9,7 @@ import { ArrayType } from '../../node_modules/@angular/compiler';
 })
 export class AppComponent implements OnInit {
   tasks = [];
-  task:object;
+  task: Object;
 
   constructor(private _httpService: HttpService){}
   ngOnInit(){
@@ -29,9 +29,9 @@ export class AppComponent implements OnInit {
       this.tasks = data['tasks'];
     });
   }
-  showClick(id: Number): void {
-    console.log('Show button working');
-    let observable = this._httpService.getOne();
+  showClick(taskID:Number): void {
+    console.log('Show button working', taskID);
+    let observable = this._httpService.getOne(taskID);
     observable.subscribe(data => {
       console.log(data);
       this.task = data['task'];

@@ -3,8 +3,12 @@
   <h1>Welcome to Restul Task API!</h1>
 
   <h3>All Tasks:</h3>
-  <p *ngFor = "let task of tasks">{{ task.title }} - {{ task.description }} <button (click)="showClick()">Show</button></p>
+  <p *ngFor = "let task of tasks">{{ task.title }} - {{ task.description }}
+    <button (click)="showClick(task._id)">Show</button>
+  </p>
   <br>
+
+  <p> {{ task.title }} - {{ task.description }} </p>
 
   <!-- <h4>The 3rd Task</h4>
   <p *ngIf = "tasks != undefined">{{ tasks[2].title }} - {{ tasks[2].description }}</p> -->

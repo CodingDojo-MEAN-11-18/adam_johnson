@@ -38,7 +38,7 @@ app.get('/tasks', function(request,response){
     });
 });
 
-app.get('/:_id', function(request,response){
+app.get('/:id', function(request,response){
   Task.findById(request.params.id)
     .then(task => {
       response.json({ task });
@@ -65,7 +65,7 @@ app.post('/', function(request,response){
       });
 });
 
-app.put('/:_id', function(request,response){
+app.put('/:id', function(request,response){
   // Task.findById(request.params.id)
   //   .then(task => {
   //     task.title = request.params.title;
@@ -81,7 +81,7 @@ app.put('/:_id', function(request,response){
     });
 });
 
-app.delete('/:_id', function(request,response){
+app.delete('/:id', function(request,response){
   // Task.remove({ id: request.params.id })
   Task.findByIdAndRemove(request.params.id)
     .then(result => {

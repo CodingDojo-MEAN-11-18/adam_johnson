@@ -15,10 +15,10 @@ export class HttpService {
     // tempObservable.subscribe(data => console.log("Got our tasks", data));
     return this._http.get('/tasks');
   }
-  getOne(){
+  getOne(taskID){
     // let tempObservable = this._http.get('/:id');
     // tempObservable.subscribe(data => console.log("Got task", data));
-    return this._http.get('/:id');
+    return this._http.get(`/${taskID}`);
   }
 }
 
