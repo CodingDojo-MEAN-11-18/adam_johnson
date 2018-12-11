@@ -20,6 +20,9 @@ export class HttpService {
     // tempObservable.subscribe(data => console.log("Got task", data));
     return this._http.get(`/${taskID}`);
   }
+  editOne(taskID){
+    return this._http.get(`/${taskID}`);
+  }
   addTask(newtask){
     return this._http.post('/task',newtask);
   }

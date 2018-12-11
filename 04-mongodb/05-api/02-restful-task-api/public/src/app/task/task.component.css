@@ -1,0 +1,5 @@
+.showBox{
+  border: 5px solid blue;
+  display: inline-block;
+  padding: 15px;
+}

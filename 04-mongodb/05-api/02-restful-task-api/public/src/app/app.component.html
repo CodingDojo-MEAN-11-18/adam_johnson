@@ -3,14 +3,13 @@
   <h1>Welcome to Restul Task API!</h1>
 
   <h3>All Tasks:</h3>
-  <p *ngFor = "let task of tasks">{{ task.title }} - {{ task.description }}
-    <!-- <button (click)="showClick(task._id)">Show</button> -->
+  <p *ngFor = "let task of tasks"> {{ task.title }} - {{ task.description }}
+    <button (click)="showClick(task._id)">Show</button>
     <button (click)="editClick(task._id)">Edit</button>
     <button (click)="deleteClick(task._id)">Delete</button>
   </p>
   <br>
-
-
+  <app-task *ngIf="task" [taskToShow]="task"></app-task>
   <!-- <button (click)="onClick(tasks)" >Get Tasks!</button> -->
 </div>
 <section style = "display:inline-block">
@@ -28,15 +27,15 @@
   </fieldset>
 </section>
 
-<section *ngIf = "task" style = "display:inline-block">
+<section *ngIf = "changeTask" style = "display:inline-block">
     <fieldset>
       <legend>Edit Task</legend>
-      <form (submit)="editSubmit(task._id)">
+      <form (submit)="editSubmit(changeTask._id)">
         <label for="title">Title: </label>
-        <input type="text" name="title" [(ngModel)]="task.title" placeholder = "{{task.title}}"/>
+        <input type="text" name="title" [(ngModel)]="changeTask.title" placeholder = "{{changeTask.title}}"/>
         <br>
         <label for="description">Description: </label>
-        <input type="text" name="description" [(ngModel)]="task.description" placeholder = "{{task.description}}"/>
+        <input type="text" name="description" [(ngModel)]="changeTask.description" placeholder = "{{changeTask.description}}"/>
         <br>
         <input type="submit" value = "Edit Task" />
       </form>
