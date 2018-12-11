@@ -48,7 +48,7 @@ app.get('/:id', function(request,response){
     });
 });
 
-app.post('/', function(request,response){
+app.post('/task', function(request,response){
   // const task = new Task({
   //   title: request.params.title,
   //   description: request.params.description,

@@ -4,17 +4,43 @@
 
   <h3>All Tasks:</h3>
   <p *ngFor = "let task of tasks">{{ task.title }} - {{ task.description }}
-    <button (click)="showClick(task._id)">Show</button>
+    <!-- <button (click)="showClick(task._id)">Show</button> -->
+    <button (click)="editClick(task._id)">Edit</button>
+    <button (click)="deleteClick(task._id)">Delete</button>
   </p>
   <br>
 
-  <p *ngIf = "task"> {{ task.title }} - {{ task.description }} </p>
 
-  <!-- <h4>The 3rd Task</h4>
-  <p *ngIf = "tasks != undefined">{{ tasks[2].title }} - {{ tasks[2].description }}</p> -->
-
-  <button (click)="onClick(tasks)" >Get Tasks!</button>
-
+  <!-- <button (click)="onClick(tasks)" >Get Tasks!</button> -->
 </div>
+<section style = "display:inline-block">
+  <fieldset>
+    <legend>Create a Task</legend>
+    <form (submit)="onSubmit()" #form='ngForm'>
+      <label for="title">Title: </label>
+      <input type="text" name="title" [(ngModel)]="newTask.title" />
+      <br>
+      <label for="description">Description: </label>
+      <input type="text" name="description" [(ngModel)]="newTask.description" />
+      <br>
+      <input type="submit" value = "Creat Task" />
+    </form>
+  </fieldset>
+</section>
+
+<section *ngIf = "task" style = "display:inline-block">
+    <fieldset>
+      <legend>Edit Task</legend>
+      <form (submit)="editSubmit(task._id)">
+        <label for="title">Title: </label>
+        <input type="text" name="title" [(ngModel)]="task.title" placeholder = "{{task.title}}"/>
+        <br>
+        <label for="description">Description: </label>
+        <input type="text" name="description" [(ngModel)]="task.description" placeholder = "{{task.description}}"/>
+        <br>
+        <input type="submit" value = "Edit Task" />
+      </form>
+    </fieldset>
+  </section>
 
 <router-outlet></router-outlet>
