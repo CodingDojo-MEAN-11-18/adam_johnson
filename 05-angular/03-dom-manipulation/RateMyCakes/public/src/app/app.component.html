@@ -1,0 +1,57 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>Rate My Cakes</h1>
+</div>
+
+<section style = "display:inline-block">
+  <fieldset>
+    <legend>Submit a Cake</legend>
+    <form (submit)="onSubmit()">
+      <label for="baker">Baker Name:</label>
+      <br>
+      <input type="text" name="baker" [(ngModel)]="newCake.baker">
+      <br>
+      <label for="image">Image URL:</label>
+      <br>
+      <input type="text" name="image" [(ngModel)]="newCake.image">
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+  </fieldset>
+</section>
+
+<div *ngFor = "let cake of cakes" class = "cake">
+  <button (click)="showCake(cake._id)"><img src="{{cake.image}}" alt="Cake"></button>
+  <h4>Baker: {{ cake.baker }}</h4>
+  <section *ngIf = "newReview">
+    <fieldset>
+      <legend>Review Cake</legend>
+      <form (submit)="reviewClick(cake._id)">
+        <select name="rating" [(ngModel)]="newReview.rating">
+          <option value="1" selected>1 Star</option>
+          <option value="2">2 Stars</option>
+          <option value="3">3 Stars</option>
+          <option value="4">4 Stars</option>
+          <option value="5">5 Stars</option>
+        </select>
+        <br>
+        <label for="comment">Comment:</label>
+        <br>
+        <input type="text" name = "comment" [(ngModel)]="newReview.comment">
+        <br>
+        <input type="submit" value="Rate">
+      </form>
+    </fieldset>
+  </section>
+</div>
+
+<!-- <div *ngIf = "cake" id = "cakeInfo">
+  <h4>Baker: {{ cake.baker }}</h4>
+  <img src="{{cake.image}}" alt="Cake">
+  <div *ngFor="let review of cake.reviews" class = "reviews">
+    <p>Rating: {{ review.rating }} Star(s)</p>
+    <p>Comment: {{ review.comment }}</p>
+  </div>
+</div> -->
+
+<app-cake *ngIf="cake" [cakeToShow]="cake"></app-cake>

@@ -1,0 +1,15 @@
+#cakeInfo {
+  border: 3px solid black;
+  display: block;
+}
+.reviews {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  margin: 20px;
+  vertical-align: top;
+}
+img {
+  height: 100px;
+  width: 200px;
+}
