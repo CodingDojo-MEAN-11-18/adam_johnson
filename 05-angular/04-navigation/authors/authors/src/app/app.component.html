@@ -1,0 +1,49 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+ <h1>Authors</h1>
+ <button (click)="addAuthor()">Add Author</button>
+</div>
+
+<section *ngIf = "newAuthor" style="display:inline-block">
+  <fieldset>
+    <legend>Add Author</legend>
+    <form (submit)="submitAuthor()">
+      <label for="name">Name: </label>
+      <input type="text" name="name" [(ngModel)]="newAuthor.name">
+      <br>
+      <input type="submit" value="Add">
+      <button (click)="cancelAdd()">Cancel</button>
+    </form>
+  </fieldset>
+</section>
+
+<section *ngIf = "changeAuthor" style="display:inline-block">
+    <fieldset>
+      <legend>Edit Author</legend>
+      <form (submit)="editSubmit(changeAuthor._id)">
+        <label for="name">Name: </label>
+        <input type="text" name="name" [(ngModel)]="changeAuthor.name">
+        <br>
+        <input type="submit" value="Edit">
+        <button (click)="cancelEdit()">Cancel</button>
+      </form>
+      
+    </fieldset>
+  </section>
+
+<div *ngFor = "let author of authors" class="authorTable">
+  <table class="table table-dark">
+    <thead>
+      <td>Author</td>
+      <td>Actions</td>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ author.name }}</td>
+        <td><button (click)="editClick(author)">Edit</button><button (click)="deleteClick(author._id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<router-outlet></router-outlet>
