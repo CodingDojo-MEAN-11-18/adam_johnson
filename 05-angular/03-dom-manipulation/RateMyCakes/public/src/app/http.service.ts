@@ -14,8 +14,8 @@ export class HttpService {
   addCake(newCake){
     return this._http.post('/cakes', newCake);
   }
-  addReview(newReview,cakeID){
-    return this._http.post(`/reviews/${cakeID}`, newReview);
+  addReview(newReview){
+    return this._http.post(`/reviews/${newReview.cake}`, newReview);
   }
   getCake(cakeID){
     return this._http.get(`/cakes/${cakeID}`);

@@ -21,14 +21,15 @@
 </section>
 
 <div *ngFor = "let cake of cakes" class = "cake">
-  <button (click)="showCake(cake._id)"><img src="{{cake.image}}" alt="Cake"></button>
+  <button (click)="showCake(cake._id)"><img [src]="cake.image" alt="Cake"></button>
   <h4>Baker: {{ cake.baker }}</h4>
   <section *ngIf = "newReview">
     <fieldset>
       <legend>Review Cake</legend>
-      <form (submit)="reviewClick(cake._id)">
-        <select name="rating" [(ngModel)]="newReview.rating">
-          <option value="1" selected>1 Star</option>
+      {{form.value | json }}
+      <form (submit)="reviewClick(cake,form,$event)" #form='ngForm'>
+        <select name="rating" [ngModel]="newReview.rating">
+          <option value="1">1 Star</option>
           <option value="2">2 Stars</option>
           <option value="3">3 Stars</option>
           <option value="4">4 Stars</option>
@@ -37,7 +38,7 @@
         <br>
         <label for="comment">Comment:</label>
         <br>
-        <input type="text" name = "comment" [(ngModel)]="newReview.comment">
+        <input type="text" name = "comment" [ngModel]="newReview.comment">
         <br>
         <input type="submit" value="Rate">
       </form>
