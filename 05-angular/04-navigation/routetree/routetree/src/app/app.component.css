@@ -1,0 +1,14 @@
+div {
+  border: 3px solid orange;
+  border-radius: 20px;
+  padding: 10px;
+  text-align: left;
+}
+p {
+  display: inline-block;
+  font-weight: bold;
+}
+h1 {
+  display: inline-block;
+  margin: 10px;
+}
