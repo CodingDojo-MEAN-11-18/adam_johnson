@@ -31,6 +31,11 @@ export class NewproductComponent implements OnInit {
     })
   }
 
+  cancelCreate(){
+    console.log('cancel button working')
+    this.loadProducts();
+  }
+
   loadProducts(){
     this._router.navigate(['/products'])
 
