@@ -43,13 +43,6 @@ export class AllproductsComponent implements OnInit {
     })
   }
 
-  // editClick(ProductID:string){
-  //   let observable = this._httpService.getOne(ProductID)
-  //   observable.subscribe(data => {
-  //     this.editProduct = data['product']
-  //     console.log('Edit product', this.editProduct);
-  //   })
-  // }
 
 }
 

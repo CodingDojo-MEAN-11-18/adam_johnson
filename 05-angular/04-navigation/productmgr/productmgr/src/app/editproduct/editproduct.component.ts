@@ -47,4 +47,13 @@ export class EditproductComponent implements OnInit {
     })
   }
 
+  removeProduct(){
+    console.log('Delete button working');
+    let observable = this._httpService.deleteProduct(this.productID)
+    observable.subscribe(data => {
+      console.log('Deleted', data);
+      this._router.navigate(['/products'])
+    })
+  }
+
 }

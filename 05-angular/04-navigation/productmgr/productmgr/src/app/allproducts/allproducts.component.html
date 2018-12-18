@@ -5,7 +5,6 @@
   <h4>{{ product.title }}</h4>
   <h4>$ {{ product.price }}</h4>
   <button [routerLink]="['/products/edit',product._id]">Edit</button>
-  <!-- <button (click)="editClick(product._id)">Edit</button> -->
   <button (click)="removeProduct(product._id)">Delete</button>
 
 </div>

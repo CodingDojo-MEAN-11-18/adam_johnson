@@ -13,7 +13,7 @@ module.exports = {
   },
   show (request,response){
     Product.findById(request.params.id)
-      .this(product => {
+      .then(product => {
         console.log('Found product', product);
         response.json({ product });
       })
