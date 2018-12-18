@@ -1,0 +1,15 @@
+<h1>Edit Product</h1>
+
+<form *ngIf="changedProduct" (submit)="editProduct()">
+  <label for="title">Title:</label>
+  <input type="text" name="title" [(ngModel)]="changedProduct.title">
+  <br>
+  <label for="price">Price:</label>
+  <input type="text" name="price" [(ngModel)]="changedProduct.price">
+  <br>
+  <label for="image">ImageURL:</label>
+  <input type="text" name="image" [(ngModel)]="changedProduct.image">
+  <br>
+  <input type="submit" value="Edit">
+
+</form>
