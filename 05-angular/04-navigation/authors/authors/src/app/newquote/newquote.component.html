@@ -1,0 +1,6 @@
+<button [routerLink]="['/authors']">Home</button>
+<form (submit)="submitQuote()">
+  <label for="quote"></label>
+  <input type="text" name="quote" [(ngModel)]="quote.quote">
+  <input type="submit" value="Add Quote">
+</form>

@@ -1,0 +1,12 @@
+<section *ngIf = "newAuthor" style="display:inline-block">
+    <fieldset>
+      <legend>Add Author</legend>
+      <form (submit)="submitAuthor()">
+        <label for="name">Name: </label>
+        <input type="text" name="name" [(ngModel)]="newAuthor.name">
+        <br>
+        <input type="submit" value="Add">
+        <button (click)="cancelAdd()">Cancel</button>
+      </form>
+    </fieldset>
+  </section>

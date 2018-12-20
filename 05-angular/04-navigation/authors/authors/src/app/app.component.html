@@ -1,8 +1,4 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
- <h1>Authors</h1>
- <button (click)="addAuthor()">Add Author</button>
-</div>
+
 
 <section *ngIf = "newAuthor" style="display:inline-block">
   <fieldset>
@@ -30,20 +26,5 @@
       
     </fieldset>
   </section>
-
-<div *ngFor = "let author of authors" class="authorTable">
-  <table class="table table-dark">
-    <thead>
-      <td>Author</td>
-      <td>Actions</td>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{ author.name }}</td>
-        <td><button (click)="editClick(author)">Edit</button><button (click)="deleteClick(author._id)">Delete</button></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
 
 <router-outlet></router-outlet>

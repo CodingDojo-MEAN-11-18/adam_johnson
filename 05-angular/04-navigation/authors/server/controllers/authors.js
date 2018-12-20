@@ -49,6 +49,31 @@ module.exports = {
       .catch(error => {
         console.log(error);
       });
-  }
+  },
+  quoteChange (request,response){
+    console.log(request.body);
+    const { change } = request.body;
+    const { quoteid } = request.params;
 
+    Author.findOneAndUpdate({ 'quotes._id': quoteid },{ $inc: { 'quotes.$.votes': change } }, { new: true })
+    .then( quote => {
+      console.log(request.params);
+      console.log(quote);
+      response.json(quote);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  },
+  quoteDelete (request,response){
+    const { quoteid } = request.params;
+    console.log(quoteid);
+    Author.findOneAndUpdate({ 'quotes._id': quoteid }, { $pull: { 'quotes.$': { quoteid } } } )
+      .then( data => {
+        response.json(data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 };
