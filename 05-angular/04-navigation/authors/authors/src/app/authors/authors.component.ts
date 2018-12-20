@@ -12,6 +12,7 @@ import { NgForm } from '@angular/forms';
 export class AuthorsComponent implements OnInit {
 
   authors: Author[]=[];
+  author: Author;
 
   constructor(private _httpService:HttpService) { }
 
@@ -36,5 +37,26 @@ export class AuthorsComponent implements OnInit {
       this.getAuthors();
     })
   }
+  editClick(author:Author){
+    console.log('Edit button working', author._id)
+    let observable = this._httpService.getAuthor(author._id)
+    observable.subscribe(data => {
+      this.author = data['author']
+    })
+  }
+
+  editSubmit(authorID:Number){
+    let observable = this._httpService.editAuthor(authorID, this.author)
+    observable.subscribe(data => {
+      console.log(data)
+      this.getAuthors();
+      this.author = {name: ""}
+      this.author = null;
+    })
+  }
+  cancelEdit(){
+    console.log('Cancel button working')
+    this.author = null;
+  } 
 
 }

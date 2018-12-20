@@ -1,8 +1,8 @@
+<div class="jumbotron">
 <div style="text-align:center">
   <h1>Authors</h1>
-  <button [routerLink]="['newauthor']">Add Author</button>
 </div>
-
+ <button class="btn btn-secondary"[routerLink]="['newauthor']">Add Author</button>
 <div *ngFor = "let author of authors" class="authorTable">
     <table class="table table-dark">
       <thead>
@@ -12,9 +12,24 @@
       <tbody>
         <tr>
           <td>{{ author.name }}</td>
-          <td><button (click)="editClick(author)">Edit</button><button (click)="deleteClick(author._id)">Delete</button></td>
-          <td><button [routerLink]="['quotes',author._id]">View Quotes</button></td>
+          <td><button class="btn btn-secondary"(click)="editClick(author)">Edit</button><button class="btn btn-secondary"(click)="deleteClick(author._id)">Delete</button></td>
+          <td><button class="btn btn-secondary"[routerLink]="['quotes',author._id]">View Quotes</button></td>
         </tr>
       </tbody>
     </table>
   </div>
+
+  <section *ngIf = "author" style="display:inline-block">
+      <fieldset>
+        <legend>Edit Author</legend>
+        <form (submit)="editSubmit(author._id)">
+          <label for="name">Name: </label>
+          <input type="text" name="name" [(ngModel)]="author.name">
+          <br>
+          <input type="submit" value="Edit">
+          <button (click)="cancelEdit()">Cancel</button>
+        </form>
+        
+      </fieldset>
+    </section>
+</div>

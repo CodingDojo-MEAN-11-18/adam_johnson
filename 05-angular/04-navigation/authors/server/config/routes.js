@@ -9,9 +9,12 @@ module.exports = function(app) {
   app.delete('/api/authors/:id', authorController.delete);
   app.put('/api/authors/:id/quotes/:quoteid',authorController.quoteChange);
   app.delete('/api/authors/:id/quotes/:quoteid', authorController.quoteDelete);
-  app.all('*', function(request,response){
-    const file = path.resolve('authors/dist/authors/index.html');
-    response.sendFile(file);
-    console.log('caught request',request.url);
+  // app.all('*', function(request,response){
+  //   const file = path.resolve('authors/dist/authors/index.html');
+  //   response.sendFile(file);
+  //   console.log('caught request',request.url);
+  // });
+  app.all('*', (request,response,next) => {
+    response.sendFile(path.resolve('./authors/dist/authors/index.html'));
   });
 };

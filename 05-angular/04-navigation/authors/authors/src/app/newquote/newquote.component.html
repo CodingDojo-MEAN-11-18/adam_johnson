@@ -1,6 +1,8 @@
-<button [routerLink]="['/authors']">Home</button>
-<form (submit)="submitQuote()">
-  <label for="quote"></label>
-  <input type="text" name="quote" [(ngModel)]="quote.quote">
-  <input type="submit" value="Add Quote">
-</form>
+<div class="jumbotron">
+  <button class="btn btn-primary float-right"[routerLink]="['/authors']">Home</button>
+  <form (submit)="submitQuote()">
+    <label for="quote"></label>
+    <input type="text" name="quote" [(ngModel)]="quote.quote">
+    <input type="submit" value="Add Quote" class="btn btn-secondary">
+  </form>
+</div>

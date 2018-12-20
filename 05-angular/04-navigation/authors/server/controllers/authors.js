@@ -66,9 +66,8 @@ module.exports = {
     });
   },
   quoteDelete (request,response){
-    const { quoteid } = request.params;
-    console.log(quoteid);
-    Author.findOneAndUpdate({ 'quotes._id': quoteid }, { $pull: { 'quotes.$': { quoteid } } } )
+    const { quoteid, id } = request.params;
+    Author.findOneAndUpdate(id, { $pull: { quotes: { _id: quoteid } } }, { new: true })
       .then( data => {
         response.json(data);
       })

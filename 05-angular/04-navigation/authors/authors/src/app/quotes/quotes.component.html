@@ -1,21 +1,24 @@
-<h1>Quotes</h1>
-<button [routerLink]="['/authors']">Home</button>
-<div *ngIf="author">
-    <button [routerLink]="['/newquote',author._id]">Add Quote</button>
-  <table *ngFor="let quote of author.quotes">
-    <thead>
-      <td>Quote</td>
-      <td>Votes</td>
-      <td>Actions</td>
-    </thead>
-    <tbody>
-      <td>{{ quote.quote }}</td>
-      <td>{{ quote.votes }}</td>
-      <td>
-        <button (click)="voteUp(quote)">Vote Up</button>
-        <button (click)="voteDown(quote)">Vote Down</button>
-        <button (click)="deleteQuote(quote)">Delete</button>
-      </td>
-    </tbody>
-  </table>
+<div class="jumbotron">
+  <h1>Quotes</h1>
+  <button class="btn btn-secondary float-right"[routerLink]="['/authors']">Home</button>
+
+  <div *ngIf="author">
+      <button class="btn btn-primary"[routerLink]="['/newquote',author._id]">Add Quote</button>
+    <table *ngFor="let quote of author.quotes" class ="quoteTable" class = "table table-dark">
+      <thead>
+        <td>Quote</td>
+        <td>Votes</td>
+        <td>Actions</td>
+      </thead>
+      <tbody>
+        <td>{{ quote.quote }}</td>
+        <td>{{ quote.votes }}</td>
+        <td>
+          <button class="btn btn-primary"(click)="voteUp(quote)">Vote Up</button>
+          <button class="btn btn-primary"(click)="voteDown(quote)">Vote Down</button>
+          <button class="btn btn-primary"(click)="deleteQuote(quote)">Delete</button>
+        </td>
+      </tbody>
+    </table>
+  </div>
 </div>
