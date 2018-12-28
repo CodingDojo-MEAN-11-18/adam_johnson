@@ -13,8 +13,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 })
 export class AllproductsComponent implements OnInit {
 
-  products: Product[]=[];
-  editProduct: Product
+  products: Product[] = [];
+  editProduct: Product;
 
   constructor(
     private _httpService: HttpService,
@@ -27,20 +27,20 @@ export class AllproductsComponent implements OnInit {
   }
 
   allProducts() {
-    let observable = this._httpService.getProducts()
+    const observable = this._httpService.getProducts();
     observable.subscribe(data => {
       console.log('Got Products', data);
       this.products = data['products'];
-    })
+    });
   }
 
-  removeProduct(ProductID:string){
+  removeProduct(ProductID: string) {
     console.log('Delete button working');
-    let observable = this._httpService.deleteProduct(ProductID)
+    const observable = this._httpService.deleteProduct(ProductID);
     observable.subscribe(data => {
       console.log('Deleted', data);
       this.allProducts();
-    })
+    });
   }
 
 

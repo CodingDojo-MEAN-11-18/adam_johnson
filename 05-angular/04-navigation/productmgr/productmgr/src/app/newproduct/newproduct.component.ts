@@ -20,24 +20,24 @@ export class NewproductComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.newProduct = {title: "", price: 0}
+    this.newProduct = {title: '', price: 0};
   }
 
-  productSubmit(){
-    let observable = this._httpService.createProduct(this.newProduct)
+  productSubmit() {
+    const observable = this._httpService.createProduct(this.newProduct);
     observable.subscribe(data => {
       console.log(data);
       this.loadProducts();
-    })
+    });
   }
 
-  cancelCreate(){
-    console.log('cancel button working')
+  cancelCreate() {
+    console.log('cancel button working');
     this.loadProducts();
   }
 
-  loadProducts(){
-    this._router.navigate(['/products'])
+  loadProducts() {
+    this._router.navigate(['/products']);
 
   }
 
