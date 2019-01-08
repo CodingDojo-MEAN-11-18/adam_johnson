@@ -3,4 +3,5 @@ const { noteController } = require('../controllers');
 
 module.exports = router
   .get('/', noteController.index)
-  .post('/', noteController.create);
+  .post('/', noteController.create)
+  .delete('/:id',noteController.delete);

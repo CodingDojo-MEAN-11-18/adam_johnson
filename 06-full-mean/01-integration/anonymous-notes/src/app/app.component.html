@@ -2,23 +2,5 @@
   <div style="text-align:center">
     <h1>Anonymous Notes</h1>
   </div>
-
-
-  <form (submit)="onSubmit()">
-    <label for="content">Note:</label>
-    <input type="text" name="content" [(ngModel)]="note.content">
-    <input type="submit" value="Add Note">
-  </form>
-
-  <cdk-virtual-scroll-viewport style="height: 500px" itemSize="90">
-
-
-
-    <div *ngFor = "let note of notes | orderBy: note.createdAt : reverse" class = "note">
-      <h5>{{ note.content }}</h5>
-      <p>Noted At: {{ note.createdAt | date: 'MMMM d, y, h:mm:ss a' }}</p>
-    </div>
-  </cdk-virtual-scroll-viewport>
-
-  <router-outlet></router-outlet>
+  <app-note-list></app-note-list>
 </div>

@@ -14,13 +14,13 @@ export class ProductsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this._route.params.subscribe((params: Params) =>{
-      console.log(params['id'])
+    this._route.params.subscribe((params: Params) => {
+      console.log(params['id']);
     });
   }
 
   loadProducts() {
-    this._router.navigate(['/products'])
+    this._router.navigate(['/products']);
   }
 
 }

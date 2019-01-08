@@ -18,4 +18,7 @@ export class NoteService {
   getNotes(): Observable<Note[]> {
     return this.http.get<Note[]>('/notes');
   }
+  deleteNote(noteID) {
+    return this.http.delete(`/notes/${noteID}`);
+  }
 }

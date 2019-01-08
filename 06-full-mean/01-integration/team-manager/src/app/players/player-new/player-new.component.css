@@ -1,0 +1,10 @@
+p {
+  color: red;
+  font-weight: bold;
+}
+input {
+  margin: 5px;
+}
+label {
+  margin: 5px;
+}
