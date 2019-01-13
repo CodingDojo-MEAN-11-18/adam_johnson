@@ -1,4 +1,4 @@
-import{ ChicagoComponent } from './chicago/chicago.component';
+import { ChicagoComponent } from './chicago/chicago.component';
 import { SeattleComponent } from './seattle/seattle.component';
 import { SanjoseComponent } from './sanjose/sanjose.component';
 import { BurbankComponent } from './burbank/burbank.component';

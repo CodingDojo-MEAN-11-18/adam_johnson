@@ -8,21 +8,21 @@ import { HttpService } from './http.service';
 })
 export class AppComponent implements OnInit {
 
-  city = "Chicago"
+  city = 'Chicago';
 
-  constructor(private _httpService: HttpService){}
+  constructor(private _httpService: HttpService) { }
 
   ngOnInit() {
-    this.getWeather(this.city)
+    this.getWeather(this.city);
   }
 
-  getWeather(city:string) {
-    let observable = this._httpService.getWeather(this.city);
+  getWeather(city: string) {
+    const observable = this._httpService.getWeather(this.city);
     observable.subscribe(data => {
-      console.log('Got Weather', data)
-      for (const item of data.weather){
-        console.log(item.description)
+      console.log('Got Weather', data);
+      for (const item of data.weather) {
+        console.log(item.description);
       }
-    })
+    });
   }
 }

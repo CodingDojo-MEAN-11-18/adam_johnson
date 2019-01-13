@@ -8,13 +8,21 @@ import { AppComponent } from './app.component';
 import { PlayerListComponent } from './players/player-list/player-list.component';
 import { PlayerNewComponent } from './players/player-new/player-new.component';
 import { PlayerStatusComponent } from './players/player-status/player-status.component';
+import { Game1Component } from './games/game1/game1.component';
+import { Game2Component } from './games/game2/game2.component';
+import { Game3Component } from './games/game3/game3.component';
+import { StatusComponent } from './games/status/status.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlayerListComponent,
     PlayerNewComponent,
-    PlayerStatusComponent
+    PlayerStatusComponent,
+    Game1Component,
+    Game2Component,
+    Game3Component,
+    StatusComponent
   ],
   imports: [
     BrowserModule,

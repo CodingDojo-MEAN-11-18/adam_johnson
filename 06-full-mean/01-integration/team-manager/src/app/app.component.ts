@@ -10,10 +10,6 @@ export class AppComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.loadPlayers();
-  }
-
-  loadPlayers() {
     this.router.navigate(['players/list']);
   }
 

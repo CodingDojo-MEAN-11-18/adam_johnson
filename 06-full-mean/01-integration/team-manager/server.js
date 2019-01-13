@@ -12,12 +12,12 @@ app.use(parser.urlencoded({ extended: true }));
 
 app.use(express.static(path.resolve('dist/team-manager')));
 
-app.use(require('./server/routes'));
-
-app.all('*', (request,response, next) => {
-  response.sendFile(path.resolve('./dist/team-manager/index.html'));
-  console.log(request.url);
-});
+app.use('/api', require('./server/routes'));
+app.use(require('./server/routes/catch-all.route'));
+// app.all('*', (request,response, next) => {
+//   response.sendFile(path.resolve('./dist/team-manager/index.html'));
+//   console.log(request.url);
+// });
 
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
