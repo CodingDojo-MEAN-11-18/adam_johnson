@@ -45,7 +45,7 @@ module.exports = {
 };
 
 function completeLogin(request, response, user) {
-  console.log('completing login', user);
+  console.log('completing login', user.toObject);
 
   request.session.user = user.toObject();
   delete request.session.user.password;

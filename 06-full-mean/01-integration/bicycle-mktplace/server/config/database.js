@@ -5,7 +5,7 @@ const fs = require('fs');
 const modelsPath = path.resolve('server/models');
 
 mongoose.connect('mongodb://localhost:27017/bicycles',
-  { useNewUrlParser: true });
+  { useNewUrlParser: true, useCreateIndex: true });
 
 mongoose.connection.on('connected', () => console.log('MongoDB connected'));
 

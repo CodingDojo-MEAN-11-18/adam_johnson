@@ -1,10 +1,15 @@
 <h2>Login</h2>
-<form (submit)="userLogin($event, loginForm)" #loginForm="ngForm">
+<div *ngIf="errors.length">
+  <ul>
+    <li *ngFor="let error of errors">{{ error }}</li>
+  </ul>
+</div>
+<form (submit)="userLogin(loginForm.value)" #loginForm="ngForm">
   <label for="email">Email:</label>
-  <input type="text" name="email">
+  <input type="text" name="email" [(ngModel)]='user.email'>
   <br>
   <label for="password">Password:</label>
-  <input type="password" name="password">
+  <input type="password" name="password"[(ngModel)]='user.password'>
   <br>
-  <input type="submit" value="Login">
+  <input type="submit" value="Login" class="btn btn-secondary">
 </form>

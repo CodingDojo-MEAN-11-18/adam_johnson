@@ -13,8 +13,8 @@ export class PlayerService {
 
   constructor(private http: HttpClient) { }
 
-  makePlayer(player) {
-    return this.http.post(this.base, player);
+  makePlayer(player): Observable<Player> {
+    return this.http.post<Player>(this.base, player);
   }
   getPlayers(): Observable<Player[]> {
     return this.http.get<Player[]>(this.base);

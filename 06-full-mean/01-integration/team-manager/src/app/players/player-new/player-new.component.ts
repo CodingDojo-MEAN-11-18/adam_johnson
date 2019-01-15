@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class PlayerNewComponent implements OnInit {
 
   player: Player;
-  error: Object;
+  error: String;
 
   constructor(
     private playerService: PlayerService,
@@ -22,11 +22,15 @@ export class PlayerNewComponent implements OnInit {
     this.player = { name: '' };
   }
 
-  onSubmit() {
-    this.playerService.makePlayer(this.player).subscribe(data => {
-      console.log(data);
-      this.error = data;
+  onSubmit(): void {
+    this.playerService.makePlayer(this.player).subscribe(
+      player => {
+      console.log('created', player);
       this.router.navigate(['players/list']);
+      },
+      error => {
+      console.log('error', error);
+      this.error = error;
     });
   }
 

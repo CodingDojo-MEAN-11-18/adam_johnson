@@ -1,4 +1,4 @@
-<app-note-new (getEvent)="findNotes()"></app-note-new>
+<app-note-new (getEvent)="findNotes($event)"></app-note-new>
 
 <div *ngIf="notes">
   <cdk-virtual-scroll-viewport style="height: 500px" itemSize="90">

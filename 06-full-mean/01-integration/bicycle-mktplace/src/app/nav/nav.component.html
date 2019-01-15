@@ -1,0 +1,2 @@
+<button (click)="logout()" *ngIf="loggedUser" class="btn btn-danger float-right">Logout</button>
+<button routerLink="listings/new" *ngIf="loggedUser" class="btn btn-primary">Add Listing</button>

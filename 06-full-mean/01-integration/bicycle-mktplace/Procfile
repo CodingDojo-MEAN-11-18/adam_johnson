@@ -1,3 +1,2 @@
 express: nodemon server.js
 angular: ng build --watch
-mongodb: sudo mongod

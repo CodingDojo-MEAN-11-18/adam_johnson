@@ -17,7 +17,7 @@ module.exports = {
       .then(player => response.json(player))
       .catch(error => {
         const errors = Object.keys(error.errors).map(key => error.errors[key].message);
-        response.json({ error: errors });
+        response.status(500).json(errors);
         console.log(errors);
       });
   },

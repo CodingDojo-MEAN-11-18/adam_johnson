@@ -27,7 +27,7 @@ const UserSchema = new Schema({
   password: String,
 },{ timestamps: true });
 
-UserSchema.plugin(uniqueValidator, { message: 'Must be unique value' });
+UserSchema.plugin(uniqueValidator, { message: 'Username or Email already in use' });
 
 UserSchema.pre('save', function(next) {
   if (!this.isModified('password')) {
@@ -43,7 +43,10 @@ UserSchema.pre('save', function(next) {
 
 });
 
-UserSchema.statics.validatePassword = function(candidatePassword, hashedPassword) {
+UserSchema.statics.validatePassword = function(
+  candidatePassword,
+  hashedPassword
+) {
   return bcrypt.compare(candidatePassword, hashedPassword);
 };
 

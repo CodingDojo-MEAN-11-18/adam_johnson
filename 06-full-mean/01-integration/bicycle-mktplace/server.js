@@ -15,7 +15,7 @@ app.use(parser.urlencoded({ extended: true }));
 
 app.use(express.static(path.resolve('dist/bicycle-mktplace')));
 
-app.use('/api', require('./server/routes'));
+
 
 app.use(cookieParser('fjdklsajfdlkjdsl'));
 app.use(logger('dev'));
@@ -32,7 +32,8 @@ app.use(session({
   }
 }));
 
-
+app.use('/api', require('./server/routes'));
+app.use(require('./server/routes/catch-all.routes'));
 
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

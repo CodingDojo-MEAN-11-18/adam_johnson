@@ -27,7 +27,7 @@ export class RegistrationComponent implements OnInit {
     this.auth.register(user).subscribe(
       createdUser => {
         console.log('created', createdUser);
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigate(['/dashboard']);
       },
       error => {
         console.log('error', error);

@@ -1,0 +1,20 @@
+<h1>Create Listing</h1>
+<form (submit)="makeListing(listingForm.value, listingForm)" #listingForm="ngForm">
+  <label for="title">Title:</label>
+  <input type="text" name="title" [(ngModel)]="listing.title">
+  <br>
+  <label for="description">Description:</label>
+  <input type="text" name="description" [(ngModel)]="listing.description">
+  <br>
+  <label for="price">Price:</label>
+  <input type="number" name="price" [(ngModel)]="listing.price">
+  <br>
+  <label for="location">Location:</label>
+  <input type="text" name="location" [(ngModel)]="listing.location">
+  <br>
+  <label for="image">Image:</label>
+  <input type="text" name="image" [(ngModel)]="listing.image">
+  <br>
+  <input type="submit" value="Create Listing">
+
+</form>
